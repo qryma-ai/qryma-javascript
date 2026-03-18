@@ -1,0 +1,39 @@
+{
+  "name": "qryma-javascript",
+  "version": "0.1.0",
+  "description": "Qryma Search API JavaScript SDK",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "node tests/test-search.js"
+  },
+  "keywords": [
+    "qryma",
+    "search",
+    "api",
+    "sdk"
+  ],
+  "author": "Qryma Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qryma/qryma-javascript"
+  },
+  "bugs": {
+    "url": "https://github.com/qryma/qryma-javascript/issues"
+  },
+  "homepage": "https://qryma.com",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/node-fetch": "^2.6.11",
+    "typescript": "^4.7.4"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}
