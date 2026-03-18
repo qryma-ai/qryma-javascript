@@ -19,10 +19,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/qryma/qryma-javascript"
+    "url": "https://github.com/qryma-ai/qryma-javascript"
   },
   "bugs": {
-    "url": "https://github.com/qryma/qryma-javascript/issues"
+    "url": "https://github.com/qryma-ai/qryma-javascript/issues"
   },
   "homepage": "https://qryma.com",
   "dependencies": {
