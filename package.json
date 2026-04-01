@@ -1,6 +1,6 @@
 {
   "name": "qryma-javascript",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Qryma Search API JavaScript SDK",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
