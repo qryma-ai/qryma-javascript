@@ -7,7 +7,8 @@ export interface SearchOptions {
   lang?: string;
   start?: number;
   safe?: boolean;
-  detail?: boolean;
+  mode?: string;
+  maxResults?: number;
 }
 
 export interface ClientConfig {
@@ -60,18 +61,35 @@ export class QrymaClient {
    * @param options.lang Language code for search results (e.g., 'am' for Amharic, 'en' for English) (optional)
    * @param options.start Starting position of results (default: 0)
    * @param options.safe Safe search mode: true or false (default: false)
-   * @param options.detail Whether to include detailed results (default: false)
+   * @param options.mode Result detail mode: 'snippet' for brief descriptions or 'fulltext' for detailed content (default: 'snippet')
    * @returns Raw API response containing the search results
    * @throws Error If there's an error with the request or response processing
    */
   async search(query: string, options: SearchOptions = {}): Promise<QrymaResponse> {
     const url = `${this.baseUrl}/api/web`;
+
+    // 设置默认值：如果 mode 为空，则默认使用 "snippet"
+    let mode = options.mode || "snippet";
+    // 确保 mode 值是有效的
+    if (mode !== "snippet" && mode !== "fulltext") {
+      mode = "snippet";
+    }
+
+    // 设置 maxResults：默认值为 5，限制在 1-10 之间
+    let maxResults = options.maxResults || 5;
+    if (maxResults < 1) {
+      maxResults = 1;
+    } else if (maxResults > 10) {
+      maxResults = 10;
+    }
+
     const payload = {
       query: query || "",
       lang: options.lang || "",
       start: options.start || 0,
       safe: options.safe || false,
-      detail: options.detail || false,
+      mode: mode,
+      max_results: maxResults,
     };
 
     const controller = new AbortController();
