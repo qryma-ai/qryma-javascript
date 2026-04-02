@@ -5,7 +5,6 @@ import { __version__ } from "./version";
 
 export interface SearchOptions {
   lang?: string;
-  start?: number;
   safe?: boolean;
   mode?: string;
   maxResults?: number;
@@ -59,9 +58,9 @@ export class QrymaClient {
    * @param query The search query string
    * @param options Search options (optional)
    * @param options.lang Language code for search results (e.g., 'am' for Amharic, 'en' for English) (optional)
-   * @param options.start Starting position of results (default: 0)
    * @param options.safe Safe search mode: true or false (default: false)
    * @param options.mode Result detail mode: 'snippet' for brief descriptions or 'fulltext' for detailed content (default: 'snippet')
+   * @param options.maxResults Maximum number of results to return (default: 5, range: 1-10) (optional)
    * @returns Raw API response containing the search results
    * @throws Error If there's an error with the request or response processing
    */
@@ -86,7 +85,6 @@ export class QrymaClient {
     const payload = {
       query: query || "",
       lang: options.lang || "",
-      start: options.start || 0,
       safe: options.safe || false,
       mode: mode,
       max_results: maxResults,
